@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title> Fridge </title>  
+  <meta charset="UTF-8">
+
+  <style>
+    body {background-color: royalblue;}
+    .divSet {float: left; margin-left: 34%; border: solid black; border-width: 5px; padding: 2px 2px 2px 2px; width: 30%} 
+
+  </style>
+
+</head>
+
+<body onload="onload()">
+    <div id="div" class="divSet">
+        <center><input type=button onclick="OnOff()" id="ON/OFF" value="OFF">
+        <input type=button onclick="Temp()" id="Temp" value="Temp">
+        <input type=button onclick="Inside()" id="Inside" value="Stock">
+        <input type=button onclick="Tv()" id="Tv" value="Television">
+        <input type=button onclick="Search()" id="Search" value="Search"></center>
+    </div>
+    <p style="clear:left;"></p>
+
+    <div id="div2">
+
+    </div>
+    <p style="clear:left;"></p>
+
+    <div id="div3">
+
+    </div>
+    <p style="clear:left;"></p>
+
+
+</body>
+    
+
+<script>
+
+    function onload() {
+        onOff = document.getElementById("ON/OFF");
+        if (onOff.value == "OFF"){
+            document.getElementById('ON/OFF').style.backgroundColor="red";
+        } else {
+            document.getElementById('ON/OFF').style.backgroundColor="green";
+        }
+
+        document.getElementById("Temp").style.visibility="hidden";
+        document.getElementById("Inside").style.visibility="hidden";
+        document.getElementById("Tv").style.visibility="hidden";
+        document.getElementById("Search").style.visibility="hidden";
+
+        setInterval(Time, 1000);
+    }
+
+    function OnOff () {
+        if (onOff.value == "OFF"){
+            onOff.value = "ON";
+            document.getElementById('ON/OFF').style.backgroundColor="green";
+
+            document.getElementById("Temp").style.visibility="visible";
+            document.getElementById("Inside").style.visibility="visible";
+            document.getElementById("Tv").style.visibility="visible";
+            document.getElementById("Search").style.visibility="visible";
+
+        } else {
+            onOff.value = "OFF";
+            document.getElementById('ON/OFF').style.backgroundColor="red";
+
+            document.getElementById("Temp").style.visibility="hidden";
+            document.getElementById("Inside").style.visibility="hidden";
+            document.getElementById("Tv").style.visibility="hidden";
+            document.getElementById("Search").style.visibility="hidden";
+
+            document.getElementById("div2").classList.remove('divSet');
+            document.getElementById("div2").innerHTML = "";
+
+            document.getElementById("div3").classList.remove('divSet');
+            document.getElementById("div3").innerHTML = "";
+
+        }
+
+    }
+
+    function Time() {
+        if (onOff.value == "ON"){
+            document.getElementById("div2").classList.add('divSet');
+            document.getElementById("div2").innerHTML = "<center><p id='timeTeller' style='font-family: Impact, fantasy; font-size: 3em;'> 00:00:00</p></center>"; 
+        }
+
+        var currentDate = new Date();
+        var hours = currentDate.getHours();
+        if (hours > 12){
+            hours = hours - 12
+        }
+        else {
+            hours = hours
+        }
+        var mins = currentDate.getMinutes();
+        var secs = currentDate.getSeconds();
+        var timeString = hours+":"+mins+":"+secs;
+
+        var output = document.getElementById("timeTeller");
+        output.textContent=timeString;
+    }
+
+
+    function Temp() {
+        document.getElementById("div3").classList.add('divSet');
+        document.getElementById("div3").innerHTML = "<center><img src='https://blog.bestbuy.ca/wp-content/uploads/2016/05/fridge-temperature.jpg'id='image1' width=400px></center>";
+
+    }
+
+    function Inside() {
+        document.getElementById("div3").classList.add('divSet');
+        document.getElementById("div3").innerHTML = "<center><img src='https://www.naturefresh.ca/wp-content/uploads/How-To-Organize-Your-Fridge-InsideFridge-terraskitchen.jpg'id='image2' width=400px></center>";
+    }
+    
+    function Tv() {
+        document.getElementById("div3").classList.add('divSet');
+        document.getElementById("div3").innerHTML = "<center><img src='https://media2.giphy.com/media/t8zJM00WuDtoSWIMpl/giphy.gif'id='image3' width=400px></center>";
+    }
+
+    function Search() {
+        document.getElementById("div3").classList.add('divSet');
+        document.getElementById("div3").innerHTML = "<center><img src='https://www.marist.edu/marist-theme/images/og_facebook_1200x630.jpg'id='image4' width=400px><input type='text' placeholder='Search..'></center>";
+    }
+
+</script>
+
+<footer>
+    <hr>
+    <small style="color: white;"> &copy; S. Macaluso, February 15,2023  </small> 
+</footer>  
+</html>
