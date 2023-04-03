@@ -12,6 +12,7 @@
     .boarderTime {border: solid black; border-width: 5px; padding: 2px 2px 2px 2px; width: 240px}
     .boarderTemp {border: solid black; border-width: 5px; padding: 2px 2px 2px 2px; width: 50px}
     .boarderText {border: solid black; border-width: 5px; padding: 2px 2px 2px 2px; width: 300px}
+    .boarderTimer {border: solid black; border-width: 5px; padding: 2px 2px 2px 2px; width: 200px}
 
   </style>
 
@@ -44,7 +45,7 @@
         <center><p class="boarderText" style='font-family: Impact, fantasy; font-size: 3em; color: #FFD700'> ROYAL FRIDGE</p></center>
 
         <center><audio controls loop>
-            <source src="Music.mp3" type="audio/mpeg">
+            <source src="images/Music.mp3" type="audio/mpeg">
         </audio></center>
     </div>
     <p style="clear:left;"></p>
@@ -68,8 +69,6 @@
     temp = Math.floor(Math.random() * 40);
     TempVersion = "c";
     TimeVersion = "normal";
-    var min = 0;
-    var sec = 0;
 
     function onload() {
 
@@ -182,22 +181,22 @@
 
     function Inside() {
         document.getElementById("div3").classList.add('appBox');
-        document.getElementById("div3").innerHTML = "<center><img src='inside.jpg'id='image2' width=400 length=400 class='boarderText'></center>";
+        document.getElementById("div3").innerHTML = "<center><img src='images/inside.jpg'id='image2' width=400 length=400 class='boarderText'></center>";
     }
     
     function Tv() {
         document.getElementById("div3").classList.add('appBox');
-        document.getElementById("div3").innerHTML = "<center><img src='courage.gif'id='image3' width=400 length=400 class='boarderText'></center> <center><audio controls><source src='TV.mp3' type='audio/mpeg'></audio></center>";
+        document.getElementById("div3").innerHTML = "<center><img src='images/courage.gif'id='image3' width=400 length=400 class='boarderText'></center> <center><audio controls><source src='images/TV.mp3' type='audio/mpeg'></audio></center>";
     }
 
     function Search() {
         document.getElementById("div3").classList.add('appBox');
-        document.getElementById("div3").innerHTML = "<center><img src='marist.jpg'id='image4' width=400px class='boarderText'><input type='text' placeholder='Search..' ></center>";
+        document.getElementById("div3").innerHTML = "<center><img src='images/marist.jpg'id='image4' width=400px class='boarderText'><input type='text' placeholder='Search..' ></center>";
     }
 
     function Weather() {
         document.getElementById("div3").classList.add('appBox');
-        document.getElementById("div3").innerHTML = "<center><img src='weather.png'id='image4' width=400px class='boarderText'></center>";
+        document.getElementById("div3").innerHTML = "<center><img src='images/weather.png'id='image4' width=400px class='boarderText'></center>";
     }
 
     function ShoppingList() {
@@ -206,9 +205,58 @@
     }
 
     function Timer() {
+        let s = 0;
         document.getElementById("div3").classList.add('appBox');
-        document.getElementById("div3").innerHTML = min+':0'+ sec;
+        document.getElementById("div3").innerHTML = "<center><h1 style='color: #FFD700'>Timer</h1><p class='boarderTimer' id='timeTeller' style='font-family: Impact, fantasy; font-size: 3em;'> 00:00:00</p></center>";
+        
+        let time = "00:00";
+        let timeA = time.split("");
+
+        setInterval(() => {
+            s = TimeTracker(timeA, s);
+        }, 1000);
+    }
+
+    function TimeTracker(timerArray, sec) {
         sec = sec + 1;
+        secString = sec.toString();
+        if (sec > 1000){
+            document.getElementById("div3").innerHTML = "<center><h1 style='color: #FFD700'>Timer</h1><p class='boarderTimer' id='timeTeller' style='font-family: Impact, fantasy; font-size: 3em;'> DONE ✅</p></center>";
+            endMessage = document.getElementById("div3").innerHTML;
+            trueTimeArray = endMessage.split("");
+        }else{
+            if(sec < 9){
+            timerArray[4] = secString;
+            trueTimeArray = timerArray.join("");
+            document.getElementById("div3").innerHTML = "<center><h1 style='color: #FFD700'>Timer</h1><p class='boarderTimer' id='timeTeller' style='font-family: Impact, fantasy; font-size: 3em;'>" + trueTimeArray+ "</p></center>";
+            sec = parseInt(secString);
+        }
+        else if(sec > 9){
+            timerArray[3] = secString;
+            timerArray[4] = "";
+            trueTimeArray = timerArray.join("");
+            document.getElementById("div3").innerHTML = "<center><h1 style='color: #FFD700'>Timer</h1><p class='boarderTimer' id='timeTeller' style='font-family: Impact, fantasy; font-size: 3em;'>" + trueTimeArray+ "</p></center>";
+            sec = parseInt(secString);
+        }
+        
+        if(sec == 60) {
+            timerArray[1] = "1"
+            timerArray[3] = "0";
+            timerArray[4] = "0";
+            trueTimeArray = timerArray.join("");
+            document.getElementById("div3").innerHTML = "<center><h1 style='color: #FFD700'>Timer</h1><p class='boarderTimer' id='timeTeller' style='font-family: Impact, fantasy; font-size: 3em;'>" + trueTimeArray+ "</p></center>";
+            sec = parseInt(secString);
+        }
+
+        if(trueTimeArray == "01:00"){
+            var audio = new Audio('images/Celebrate.mp3')
+            audio.play();
+            sec = 1000;
+        }
+
+
+        return sec;
+        }
         
     }
 
