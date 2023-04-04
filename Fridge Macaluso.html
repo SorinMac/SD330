@@ -21,14 +21,14 @@
 <body onload="onload()">
     <div id="div" class="appBox">
         <center><input type=button onclick="OnOff()" id="ON/OFF" value="OFF">
-        <input type=button onclick="ChangeTemp()" id="Change" value="F/C">
-        <input type=button onclick="Inside()" id="Inside" value="🍖">
-        <input type=button onclick="Tv()" id="Tv" value="📺">
-        <input type=button onclick="Search()" id="Search" value="🔎">
-        <input type=button onclick="ChangeTime()" id="Time" value="12/24">
-        <input type=button onclick="ShoppingList()" id="Shopping" value="🛒">
-        <input type=button onclick="Weather()" id="Weather" value="☀️">
-        <input type=button onclick="Timer()" id="Timer" value="⏲️"></center>
+            <input type=button onclick="ChangeTemp()" id="Change" value="F/C">
+            <input type=button onclick="Inside()" id="Inside" value="🍖">
+            <input type=button onclick="Tv()" id="Tv" value="📺">
+            <input type=button onclick="Search()" id="Search" value="🔎">
+            <input type=button onclick="ChangeTime()" id="Time" value="12/24">
+            <input type=button onclick="ShoppingList()" id="Shopping" value="🛒">
+            <input type=button onclick="Weather()" id="Weather" value="☀️">
+            <input type=button onclick="Timer()" id="Timer" value="⏲️"></center>
 
         <div id="div4" class="sameLineStart">
             <p class="boarderTime" id='timeTeller' style='font-family: Impact, fantasy; font-size: 3em;'> 00:00:00</p>
@@ -41,6 +41,8 @@
         </div>
 
         <input style='font-family: Impact, fantasy; font-size: 2em; background-color: green;' type=button onclick="inc()" id="inc" value="🠺">
+
+        <center><p style='font-family: Impact, fantasy; font-size: 3em; color: #FFD700' id="waring"></p></center>
 
         <center><p class="boarderText" style='font-family: Impact, fantasy; font-size: 3em; color: #FFD700'> ROYAL FRIDGE</p></center>
 
@@ -136,6 +138,9 @@
                 hours = hours - 12
                 time = "pm";
             }
+            else if(hours == 12) {
+                time = "pm";
+            }
             else {
                 hours = hours;
                 time = "am";
@@ -186,7 +191,9 @@
     
     function Tv() {
         document.getElementById("div3").classList.add('appBox');
-        document.getElementById("div3").innerHTML = "<center><img src='courage.gif'id='image3' width=400 length=400 class='boarderText'></center> <center><audio controls><source src='images/TV.mp3' type='audio/mpeg'></audio></center>";
+        document.getElementById("div3").innerHTML = "<center><img src='courage.gif'id='image3' width=400 length=400 class='boarderText'></center>"
+        var audio = new Audio('TV.mp3')
+        audio.play();;
     }
 
     function Search() {
@@ -225,13 +232,13 @@
             endMessage = document.getElementById("div3").innerHTML;
             trueTimeArray = endMessage.split("");
         }else{
-            if(sec < 9){
+            if(sec <= 9){
             timerArray[4] = secString;
             trueTimeArray = timerArray.join("");
             document.getElementById("div3").innerHTML = "<center><h1 style='color: #FFD700'>Timer</h1><p class='boarderTimer' id='timeTeller' style='font-family: Impact, fantasy; font-size: 3em;'>" + trueTimeArray+ "</p></center>";
             sec = parseInt(secString);
         }
-        else if(sec > 9){
+        else if(sec >= 9){
             timerArray[3] = secString;
             timerArray[4] = "";
             trueTimeArray = timerArray.join("");
@@ -263,11 +270,25 @@
     function inc() {
         temp += 1;
         document.getElementById("temp").innerHTML = temp;
+        if(temp >= 45){
+            document.getElementById("waring").innerHTML = "Fridge temperature is to high!";
+            temp = temp - 1;
+        }
+        else {
+            document.getElementById("waring").innerHTML = "";
+        }
     }
 
     function dec() {
         temp -= 1;
         document.getElementById("temp").innerHTML = temp;
+        if(temp <= -5){
+            document.getElementById("waring").innerHTML = "Fridge temperature is to low!";
+            temp = temp + 1;
+        }
+        else {
+            document.getElementById("waring").innerHTML = "";
+        }
     }
 
     function ChangeTime() {
