@@ -10,9 +10,10 @@
     .sameLineStart {display:inline-block; width: 290px}
     .sameLineEnd {display:inline-block;}
     .boarderTime {border: solid black; border-width: 5px; padding: 2px 2px 2px 2px; width: 240px}
-    .boarderTemp {border: solid black; border-width: 5px; padding: 2px 2px 2px 2px; width: 50px}
+    .boarderTemp {border: solid black; border-width: 5px; padding: 2px 2px 2px 2px; width: 65px}
     .boarderText {border: solid black; border-width: 5px; padding: 2px 2px 2px 2px; width: 300px}
     .boarderTimer {border: solid black; border-width: 5px; padding: 2px 2px 2px 2px; width: 200px}
+    .boarderVersion {border: solid black; border-width: 5px; padding: 2px 2px 2px 2px; width: 300px}
 
   </style>
 
@@ -44,6 +45,8 @@
 
         <center><p style='font-family: Impact, fantasy; font-size: 3em; color: #FFD700' id="waring"></p></center>
 
+        <center><p style='font-family: Impact, fantasy; font-size: 3em; color: #FFD700' id="tempVersion" class="boarderVersion"></p></center>
+
         <center><p class="boarderText" style='font-family: Impact, fantasy; font-size: 3em; color: #FFD700'> ROYAL FRIDGE</p></center>
 
         <center><audio controls loop>
@@ -69,7 +72,7 @@
 <script>
 
     temp = Math.floor(Math.random() * 40);
-    TempVersion = "c";
+    TempVersion = "C";
     TimeVersion = "normal";
 
     function onload() {
@@ -89,7 +92,8 @@
         document.getElementById("Weather").style.visibility="hidden";
         document.getElementById("Timer").style.visibility="hidden";
 
-        document.getElementById("temp").innerHTML = temp;
+        document.getElementById("temp").innerHTML = temp + "°";
+        document.getElementById("tempVersion").innerHTML =  "Switch too: " + TempVersion + "°";
 
         setInterval(Time, 1000);
     }
@@ -168,17 +172,19 @@
 
 
     function ChangeTemp() {
-        if (TempVersion == "c"){
+        if (TempVersion == "C"){
             temp = Math.floor(temp-32) * 5/9;
-            TempVersion = "f";
+            TempVersion = "F";
             temp = Math.floor(temp);
-            document.getElementById("temp").innerHTML = temp;
+            document.getElementById("temp").innerHTML =  temp + "°";
+            document.getElementById("tempVersion").innerHTML =  "Switch too: " + TempVersion + "°";
         }
-        else if(TempVersion == "f"){
+        else if(TempVersion == "F"){
             temp = Math.floor(temp*5/9) + 32;
-            TempVersion = "c";
+            TempVersion = "C";
             temp = Math.floor(temp);
-            document.getElementById("temp").innerHTML = temp;
+            document.getElementById("temp").innerHTML =  temp + "°";
+            document.getElementById("tempVersion").innerHTML =  "Switch too: " + TempVersion + "°";
         }
 
         
@@ -191,9 +197,7 @@
     
     function Tv() {
         document.getElementById("div3").classList.add('appBox');
-        document.getElementById("div3").innerHTML = "<center><img src='courage.gif'id='image3' width=400 length=400 class='boarderText'></center>"
-        var audio = new Audio('TV.mp3')
-        audio.play();;
+        document.getElementById("div3").innerHTML = "<center><img src='courage.gif' id='image3' width=400 length=400 class='boarderText'></center><center><audio controls autoplay><source src='TV.mp3' type='audio/mpeg'></audio></center>";
     }
 
     function Search() {
@@ -208,20 +212,18 @@
 
     function ShoppingList() {
         document.getElementById("div3").classList.add('appBox');
-        document.getElementById("div3").innerHTML = "<center><h1 style='color: #FFD700'>Shopping List</h1></center><p><ul style='color: #FFD700'><li>Milk</li><li>Eggs</li><li>Cheese</li><li>Fruit</li><li>Meat</li></ul></p><center><input type='text' placeholder='Add iteam...'></center>";
+        document.getElementById("div3").innerHTML = "<center><h1 style='font-family: Impact, fantasy; font-size: 3em; color: #FFD700'>Shopping List</h1></center><p><ul style='color: #FFD700'><li>Milk</li><li>Eggs</li><li>Cheese</li><li>Fruit</li><li>Meat</li><li><p id='added'> </p></li></ul></p><center><input type='text' id='textbox'><input type='button' onclick='addText()'' id='text' value='✅'></center><center><p id='error' style='font-size: 2em; color: red'> </p></center>";
     }
 
     function Timer() {
         let s = 0;
         document.getElementById("div3").classList.add('appBox');
-        document.getElementById("div3").innerHTML = "<center><h1 style='color: #FFD700'>Timer</h1><p class='boarderTimer' id='timeTeller' style='font-family: Impact, fantasy; font-size: 3em;'> 00:00</p></center>";
+        document.getElementById("div3").innerHTML = "<center><h1 style='color: #FFD700'>Timer</h1><p class='boarderTimer' id='timeTeller' style='font-family: Impact, fantasy; font-size: 3em;'>00:00</p></center>";
         
         let time = "00:00";
         let timeA = time.split("");
 
-        setInterval(() => {
-            s = TimeTracker(timeA, s);
-        }, 1000);
+        setInterval(() => {s = TimeTracker(timeA, s);}, 1000);
     }
 
     function TimeTracker(timerArray, sec) {
@@ -269,7 +271,7 @@
 
     function inc() {
         temp += 1;
-        document.getElementById("temp").innerHTML = temp;
+        document.getElementById("temp").innerHTML = temp + "°";
         if(temp >= 45){
             document.getElementById("waring").innerHTML = "Fridge temperature is to high!";
             temp = temp - 1;
@@ -281,7 +283,7 @@
 
     function dec() {
         temp -= 1;
-        document.getElementById("temp").innerHTML = temp;
+        document.getElementById("temp").innerHTML =  temp + "°";
         if(temp <= -5){
             document.getElementById("waring").innerHTML = "Fridge temperature is to low!";
             temp = temp + 1;
@@ -302,11 +304,24 @@
     
     }
 
+    function addText() {
+        var list = document.getElementById("textbox").value;
+        num = isNaN(list);
+
+        if(num == false){
+            document.getElementById("error").innerHTML = "Not able to be added to shopping list!";
+        }
+        else if(num == true){
+            document.getElementById("error").innerHTML = "";
+            document.getElementById("added").innerHTML = list;
+        }
+    }
+
 
 </script>
 
 <footer>
     <hr>
-    <small style="color: white;"> &copy; S. Macaluso, February 15,2023  </small> 
+    <small style="color: white;"> &copy; S. Macaluso, April 04,2023  </small> 
 </footer>  
 </html>
