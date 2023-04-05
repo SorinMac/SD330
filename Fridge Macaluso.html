@@ -173,14 +173,14 @@
 
     function ChangeTemp() {
         if (TempVersion == "C"){
-            temp = Math.floor(temp-32) * 5/9;
+            temp = Math.floor((temp-32) * 5/9);
             TempVersion = "F";
             temp = Math.floor(temp);
             document.getElementById("temp").innerHTML =  temp + "°";
             document.getElementById("tempVersion").innerHTML =  "Switch too: " + TempVersion + "°";
         }
         else if(TempVersion == "F"){
-            temp = Math.floor(temp*5/9) + 32;
+            temp = Math.floor((temp*5/9) + 32);
             TempVersion = "C";
             temp = Math.floor(temp);
             document.getElementById("temp").innerHTML =  temp + "°";
