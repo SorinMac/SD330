@@ -1,1 +1,56 @@
-<h1> Hello World </h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title> File List </title>  
+    <meta charset="UTF-8">
+
+    <style>
+        .text {font-family: Impact, fantasy; font-size: 1em; color: #FFA500;}
+    </style>
+            
+</head>
+
+<body onload="fileList()" style="background-image: url('background.jpg');">
+        <h1 style="color: #FFA500">File List SorinMac SD330</h1>
+
+        <p class="text"> This is the file list of Sorin Macaluso for class System Design 330 with Professor Tokash.</p>
+        <p class="text"> These files are all the project and any sound or images files needed for the projects.</p>
+
+        <p id="files" style="color: white"></p>
+        
+</body>
+
+<script>
+
+    function fileList(){ 
+        (async () => {
+            const response = await fetch("https://api.github.com/repos/SorinMac/SD330/contents/");
+            const data = await response.json();
+            
+            let htmlString = "";
+
+            for (let file of data) {
+                fname = file.name;      
+                fpath = "https://sorinmac.github.io/SD330/" + fname;  
+                
+
+                htmlString += "<ul>";
+                htmlString += "<li><p>" + fname + "</p></li>" ;
+                htmlString += "<p><a style='color: white' href=" + "'" + fpath + "'" + ">" + fpath + "</a></p>";
+                htmlString += "</ul>";
+            }
+            
+            htmlString += '</ul></div>';
+            document.getElementById('files').innerHTML = htmlString;
+        })()
+    }	
+
+        
+</script>
+
+<footer>
+    <hr>
+    <small style="color: white;"> &copy; S. Macaluso, April 09,2023  </small> 
+</footer>  
+
+</html>
