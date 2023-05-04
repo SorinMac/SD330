@@ -32,17 +32,11 @@
 
     "books" : {
         "ReligionBook": {
-            "ISBN" : "123",
-            "title": "Religion in the 21 Century",
-            "author": "Ms.Smith",
-            "courceID" : "107"
-        },
-        
-        "ReligionBook": {
-            "ISBN" : "234",
-            "title": "Religion in the 21 Century",
-            "author": "Ms.Smith",
-            "courceID" : "107"
+                "ISBN123" : {
+                    "title": "Religion in the 21 Century",
+                    "author": "Ms.Smith",
+                    "courceID" : "107"
+                }
         },
 
         "MathBook": {
