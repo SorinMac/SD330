@@ -1,70 +1,60 @@
 {
-    "classes" : {
+    "classes": {
         "CMPT330": {
-            "courceID" : "330",
-            "title" : "System Desgin",
-            "semester" : "Spring",
-            "professor" : "Tokash"
+            "courceID": "330",
+            "title": "System Design",
+            "semester": "Spring",
+            "professor": "Tokash"
         },
-
         "CMPT307": {
-            "courceID" : "307",
-            "title" : "Inter Networking",
-            "semester" : "Spring",
-            "professor" : "Tokash"
+            "courceID": "307",
+            "title": "Inter Networking",
+            "semester": "Spring",
+            "professor": "Tokash"
         },
-
         "MATH241": {
-            "courceID" : "241",
-            "title" : "Calculus",
-            "semester" : "Spring",
-            "professor" : "Kirtland"
+            "courceID": "241",
+            "title": "Calculus",
+            "semester": "Spring",
+            "professor": "Kirtland"
         },
-
         "REST107": {
-            "courceID" : "107",
-            "title" : "Religion",
-            "semester" : "Spring",
-            "professor" : "Loh"
+            "courceID": "107",
+            "title": "Religion",
+            "semester": "Spring",
+            "professor": "Loh"
         }
-    
     },
-
-    "books" : {
+    "books": {
         "ReligionBook": {
-            "ISBN" : "123",
+            "ISBN": "123",
             "title": "Religion in the 21 Century",
             "author": "Ms.Smith",
-            "courceID" : "107"
+            "courceID": "107"
         },
-
         "MathBook": {
-            "ISBN" : "456",
+            "ISBN": "456",
             "title": "Calculus 101",
             "author": "Mrs. Kirtland",
-            "courceID" : "241"
+            "courceID": "241"
         },
-
         "InterNetworkingBook": {
-            "ISBN" : "789",
+            "ISBN": "789",
             "title": "Cico Handbook",
             "author": "Mrs. Tokash",
-            "courceID" : "307"
+            "courceID": "307"
         },
-
         "SystemDesignBook": {
-            "ISBN" :  "1011",
+            "ISBN": "1011",
             "title": "Design of Systems",
             "author": "Mrs. Tokash",
-            "courceID" : "307"
+            "courceID": "330"
         },
-        
         "R2": {
-            "ISBN" : "321",
+            "ISBN": "321",
             "title": "World Religions",
             "author": "Ms.Smith",
-            "courceID" : "107"
+            "courceID": "107"
         }
-
     }
 }
