@@ -37,7 +37,13 @@
             "author": "Ms.Smith",
             "courceID" : "107"
         },
-        
+
+        "ReligionBook2": {
+            "ISBN" : "321",
+            "title": "World Religions",
+            "author": "Ms.Smith",
+            "courceID" : "107"
+        },
 
         "MathBook": {
             "ISBN" : "456",
