@@ -35,26 +35,32 @@
         "MathBook": {
             "ISBN": "456",
             "title": "Calculus 101",
-            "author": "Mrs. Kirtland",
+            "author": "Mr. Kirtland",
             "courceID": "241"
         },
         "InterNetworkingBook": {
             "ISBN": "789",
             "title": "Cico Handbook",
-            "author": "Mrs. Tokash",
+            "author": "Mr. Tokash",
             "courceID": "307"
         },
         "SystemDesignBook": {
             "ISBN": "1011",
             "title": "Design of Systems",
-            "author": "Mrs. Tokash",
+            "author": "Mr. Tokash",
             "courceID": "330"
         },
-        "R2": {
+        "ReligionBook2": {
             "ISBN": "321",
             "title": "World Religions",
             "author": "Ms.Smith",
             "courceID": "107"
-        }
+        },
+        "InterNetworkinBook2": {
+            "ISBN": "987",
+            "title": "Cico Command Book",
+            "author": "Mr. Tokash",
+            "courceID": "307"
+        },
     }
 }
