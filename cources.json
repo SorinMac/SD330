@@ -38,12 +38,6 @@
             "courceID" : "107"
         },
         
-        "ReligionBook2": {
-            "ISBN" : "234",
-            "title": "World Religions",
-            "author": "Ms.Smith",
-            "courceID" : "107"
-        },
 
         "MathBook": {
             "ISBN" : "456",
@@ -58,13 +52,6 @@
             "author": "Mrs. Tokash",
             "courceID" : "307"
         },
-        
-        "InterNetworkingBook2": {
-            "ISBN" : "981",
-            "title": "Cico Command Book",
-            "author": "Mrs. Tokash",
-            "courceID" : "307"
-        },
 
         "SystemDesignBook": {
             "ISBN" :  "1011",
@@ -73,4 +60,5 @@
             "courceID" : "307"
         }
 
+    }
 }
