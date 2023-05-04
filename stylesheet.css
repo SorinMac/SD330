@@ -1,0 +1,93 @@
+nav {
+    border-bottom: 1px solid black;
+}
+
+a {
+    color: black;
+}
+
+.crumbs ol {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.crumb {
+    display: inline-block;
+}
+
+.crumb a::after {
+    display: inline-block;
+    color: black;
+    content: '⮞';
+    font-size: 80%;
+    font-weight: bold;
+    padding: 0 3px;
+}
+
+.background {
+    background-color: ghostwhite;
+}
+
+ul {
+    display: table;
+    margin: 0 auto;
+
+}
+
+li {
+    width: 300px;
+    display:inline-block;
+    background-color: red;
+}
+
+.boarder{
+    border: solid black; border-width: 2px;
+}
+
+.imgclass {
+    width: 300px;
+    height: 300px;
+    float: left;
+    padding: 10px 100px 10px 100px;
+}
+
+.headertitle {
+    font-size: 5em;
+    display: inline-block;
+    white-space: nowrap;
+    
+}
+
+.logo {
+    width: 75px;
+    height: 75px;
+    
+}
+
+.footer {
+    background-color: grey;
+}
+
+.footerStuff {
+    font-size: 2em;
+    padding: 20px;
+    display: inline-block;
+    margin: 0;
+}
+
+.footerTextStuff {
+    padding: 20px;
+    display: inline-block;
+}
+
+th {
+    font-size: 3em;
+    color: red;
+    background-color: white;
+}
+
+td {
+    font-size: 2em;
+    color: red;
+    background-color: white;
+}

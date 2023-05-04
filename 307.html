@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title> Test </title>  
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="stylesheet.css">
+</head>
+
+<body class="background" onload="bookList()">
+    <div id="header">
+        <h1 class="headertitle"> <img src="FoxBooks.png" class="logo"> Fox Books </h1>
+        <ul style="display: inline-block; padding-left: 615px;">
+            <li style="width: 100px; background-color: ghostwhite;"><center><button style="background-color: red;">Login</button></center></li>
+            <li style="width: 100px; background-color: ghostwhite;"><center><button style="background-color: red;">Logout</button></center></li>
+            <li style="width: 100px; background-color: ghostwhite;"><center><button style="background-color: red;">Help</button></center></li>
+            <li style="width: 100px; background-color: ghostwhite;"><center><button style="background-color: red;">Settings</button></center></li>
+        </ul>
+        <ul>
+            <input type='text' placeholder='Search...' style="height: 17px; float: right">
+            <li class="boarder"><a href="FoxBooks.html"><center>Home</center></a></li>
+            <li class="boarder"><a href="ClassList.html"><center>Class List</center></a></li>
+            <li class="boarder"><a href="OrderBooks.html"><center>Order Books </center></a></li>
+        </ul>
+        <nav class="crumbs">
+            <ol>
+                <li class="crumb" style="width: 60px; background-color: ghostwhite;"><a href="FoxBooks.html" style="width: 100px;">Home</a></li>
+                <li class="crumb" style="width: 90px; background-color: ghostwhite;"><a href="ClassList.html" style="width: 100px;">Class-List</a></li>
+                <li class="crumb" style="width: 110px; background-color: ghostwhite;"><a href="330.html" style="width: 100px;">307 Book List</a></li>
+            </ol>
+        </nav>
+    </div>
+    
+    <center><p id="list"></p></center>
+
+    <center><p id="pic"></p></center>
+
+    <p style="clear:left;"></p>
+    <p style="clear:right;"></p>
+
+</body>
+
+
+<script>
+    function bookList() {
+        (async () => {
+            const response = await fetch("https://SorinMac.github.io/SD330/cources.json");
+            const data = await response.json();
+            
+            htmlstring = "<table border=1><tr><th> Title </th><th> Author </th><th> Cource ID </th><th> ISBN </th></tr>"
+            htmlstring += "<tr><td>" + data["books"]["InterNetworkingBook"]["title"] + "</td><td>" + data["books"]["InterNetworkingBook"]["author"] + "</td><td>" + data["books"]["InterNetworkingBook"]["courceID"] + "</td><td>" + data["books"]["InterNetworkingBook"]["ISBN"] + "</td></tr>";
+            htmlstring += "<tr><td>" + data["books"]["InterNetworkingBook2"]["title"] + "</td><td>" + data["books"]["InterNetworkingBook2"]["author"] + "</td><td>" + data["books"]["InterNetworkingBook2"]["courceID"] + "</td><td>" + data["books"]["InterNetworkingBook2"]["ISBN"] + "</td></tr>";
+            htmlstring += "</table>";
+
+            document.getElementById("list").innerHTML = htmlstring
+
+            picString = "<img src='cisco.jpg' class='imgclass' style='padding: 10px 10px 10px 300px'>";
+            picString += "<img src='cisco2.jpg' class='imgclass' style='padding: 10px 10px 10px 300px'>";
+
+            document.getElementById("pic").innerHTML = picString
+        })()
+    }
+
+</script>
+
+<footer class="footer">
+    <p class="boarder"></p>
+    <center><h1 class="footerStuff"> Contact Use At: </h1>
+    <p class="footerTextStuff"> 914-123-1234 <br> FoxBooks@marist.edu <br> Marist College</p>
+
+    <h1 class="footerStuff"> Help: </h1>
+    <p class="footerTextStuff"> Order Status <br> Shipping and Delivery <br> Returns</p>
+
+    <h1 class="footerStuff"> About Us: </h1>
+    <p class="footerTextStuff"> News <br> Investors <br> Sustainability</p></center>
+    
+</footer>
+ 
+</html>
